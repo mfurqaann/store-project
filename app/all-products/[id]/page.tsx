@@ -1,4 +1,5 @@
 import AddToCart from '@/app/ui/addToCart';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import React from 'react'
 
@@ -23,9 +24,6 @@ async function getProduct(id: number) {
         }
 
         const product: Product = await res.json()
-        if (!product) {
-            return notFound();
-        }
 
         return product
     } catch (error) {
@@ -36,15 +34,35 @@ async function getProduct(id: number) {
 export default async function ProductDetails(props: {
     params: Promise<{ id: number }>
 }) {
-    const { id } = await props.params
-    const product = await getProduct(id)
-
-
+    const { id } = await props.params;
+    const product = await getProduct(id);
+    if (!product) {
+        return notFound();
+    }
 
     return (
-        <div>
-            <div>ProductDetails {product?.title}</div>
-            <AddToCart id={id} />
+        <div className='flex justify-center items-center h-screen'>
+            <div className='flex flex-wrap justify-center 
+            items-center bg-white w-auto h-auto p-5 md:p-0 md:w-3/4 md:h-3/4 rounded-2xl'>
+                <div className='grid place-items-center w-80 md:w-1/2 h-auto'>
+                    <Image
+                        src={product?.image}
+                        width={500}
+                        height={500}
+                        alt={product.title}
+                        className='object-contain md:w-80 md:h-80 w-48 p-5'
+                    />
+                </div>
+                <div className='flex flex-col gap-5 w-80 md:w-1/2 h-auto px-5'>
+                    <h1 className='text-2xl w-auto lg:w-96'>{product.title}</h1>
+                    <p className='text-2xl'>${product.price}</p>
+                    <div>
+                        <h1 className='md:text-xl'>Description</h1>
+                        <p className='text-base text-justify'>{product.description}</p>
+                    </div>
+                    <AddToCart id={product.id} />
+                </div>
+            </div>
         </div>
     )
 }

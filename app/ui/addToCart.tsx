@@ -10,8 +10,7 @@ function AddToCart({ id }: { id: number }) {
     }
     return (
         <div>
-            <div>AddToCart</div>
-            <button className='w-30 p-5 border-4 bg-black text-white rounded-3xl' onClick={() => addToCart(id)}>Add To Cart</button>
+            <button className='w-36 h-10 hover:bg-gray-600 bg-gray-950 text-white text-center rounded-3xl' onClick={() => addToCart(id)}>Add To Cart</button>
         </div>
     )
 }
