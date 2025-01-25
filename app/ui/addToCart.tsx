@@ -1,16 +1,18 @@
 'use client'
-import React from 'react'
+import React, { useContext } from 'react'
+import { CartContext } from '../context/cart'
 
 
 
-function AddToCart({ id }: { id: number }) {
+function AddToCart({ product }: { product: Product }) {
+    const { addToCart } = useContext(CartContext)
 
-    function addToCart(productId: number) {
-        console.log(productId)
-    }
     return (
         <div>
-            <button className='w-36 h-10 hover:bg-gray-600 bg-gray-950 text-white text-center rounded-3xl' onClick={() => addToCart(id)}>Add To Cart</button>
+            <button className='w-36 h-10 hover:bg-gray-600 bg-gray-950 text-white text-center rounded-3xl'
+                onClick={() => addToCart(product)}>
+                Add To Cart
+            </button>
         </div>
     )
 }

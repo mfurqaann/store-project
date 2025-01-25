@@ -60,7 +60,7 @@ export default async function ProductDetails(props: {
                         <h1 className='md:text-xl'>Description</h1>
                         <p className='text-base text-justify'>{product.description}</p>
                     </div>
-                    <AddToCart id={product.id} />
+                    <AddToCart product={product} />
                 </div>
             </div>
         </div>

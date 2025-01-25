@@ -1,18 +1,18 @@
 import Image from "next/image";
-import Navbar from "../ui/navbar"
 import Link from "next/link";
-import Footer from "../ui/footer";
 
 
 export default async function Page() {
-    const data = await fetch('https://fakestoreapi.com/products');
+    const data = await fetch('https://fakestoreapi.com/products', {
+        cache: 'force-cache'
+    });
     const products = await data.json();
 
     function truncateString(title: string, maxLength: number): string {
         if (title.length > maxLength) {
-            return title.slice(0, maxLength) + '...'; // Memotong string dan menambahkan '...'
+            return title.slice(0, maxLength) + '...';
         }
-        return title; // Jika tidak perlu dipotong, kembalikan string asli
+        return title;
     }
 
     return (
