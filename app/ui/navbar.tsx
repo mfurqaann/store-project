@@ -12,9 +12,9 @@ function Navbar() {
                 <h3 className="md:text-3xl">Logo Store</h3>
             </Link>
 
-            <div className='md:text-3xl'>
+            <Link href={{ pathname: '/checkout' }} className='md:text-3xl'>
                 Cart {cart.length}
-            </div>
+            </Link>
         </nav>
     )
 }
