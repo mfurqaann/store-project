@@ -19,8 +19,6 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
         } else {
             setCart((prevCart) => [...prevCart, product])
         }
-
-        console.log(cart)
     }
 
     return (
