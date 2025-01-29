@@ -32,7 +32,7 @@ export default async function Page() {
                                     "
                             />
                         </div>
-                        <div className="px-1 w-56">
+                        <div className="px-1 w-72">
                             <div className="text-md font-bold">{truncateString(product.title, 20)}</div>
                             <div>{product.category}</div>
                             <div className="text-red-600">${product.price}</div>

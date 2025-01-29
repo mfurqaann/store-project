@@ -4,6 +4,7 @@ import { createContext, useState } from "react";
 
 type Cart = {
     addToCart: (product: Product) => void,
+    removeFromCart: (product: Product) => void,
     cart: Array<Product>
 }
 
@@ -21,8 +22,15 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
         }
     }
 
+    const removeFromCart = (product: Product) => {
+        const removeCart = cart.filter((prod: Product) => prod.id !== product.id)
+
+        setCart(removeCart)
+    }
+
+
     return (
-        <CartContext.Provider value={{ addToCart, cart }}>
+        <CartContext.Provider value={{ addToCart, cart, removeFromCart }}>
             {children}
         </CartContext.Provider>
     )
