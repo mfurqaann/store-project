@@ -1,12 +1,11 @@
 'use client'
-import React, { useContext } from 'react'
 
-function Footer({ setDarkMode, darkMode }: { setDarkMode: any, darkMode: string }) {
+function Footer({ setDarkMode }: { setDarkMode: any }) {
     return (
-        <div className='flex flex-wrap justify-between px-10 items-center w-full h-32'>
+        <div className='flex flex-wrap justify-between px-10 items-end w-full h-32 mb-3'>
             <div>
-                <div className='text-2xl mb-2 dark:text-neutral-200'>Find Me</div>
-                <div className='flex gap-3'>
+                <div className='dark:text-neutral-200 text-2xl mb-2'>Find Me</div>
+                <div className='flex gap-1'>
                     <a href='https://github.com/mfurqaann' target='_blank'>
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -39,7 +38,23 @@ function Footer({ setDarkMode, darkMode }: { setDarkMode: any, darkMode: string 
                 </div>
             </div>
             <div>
-                <button onClick={() => darkMode === 'dark' ? setDarkMode('light') : setDarkMode('dark')}>Toggle dark mode</button>
+                {/* <button onClick={() => darkMode === 'dark' ? setDarkMode('light') : setDarkMode('dark')}>Toggle dark mode</button> */}
+                <button
+                    onClick={() => setDarkMode('light')}
+                    className='w-10 h-10 border-2 border-black rounded-md dark:border-white mr-2'>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 mx-auto dark:stroke-white">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+                    </svg>
+                </button>
+                <button
+                    onClick={() => setDarkMode('dark')}
+                    className='w-10 h-10 border-2 border-black dark:border-white rounded-md'>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 mx-auto dark:stroke-white">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+                    </svg>
+
+
+                </button>
             </div>
         </div>
     )

@@ -41,7 +41,7 @@ function Products({ products }: { products: Array<Product> }) {
     return (
         <Tabs defaultValue={selectedCategory} onValueChange={setSelectedCategory}>
             <div className='flex justify-center'>
-                <TabsList className='dark:text-neutral-200 dark:bg-slate-800'>
+                <TabsList className='flex flex-wrap h-auto dark:text-neutral-200 dark:bg-slate-800'>
                     <TabsTrigger value="all">All</TabsTrigger>
                     <TabsTrigger value="electronics">Electronics</TabsTrigger>
                     <TabsTrigger value="jewelery">Jewelery</TabsTrigger>
