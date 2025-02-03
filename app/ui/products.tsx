@@ -7,7 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 
 function Products({ products }: { products: Array<Product> }) {
-    const [selectedCategory, setSelectedCategory] = useState('')
+    const [selectedCategory, setSelectedCategory] = useState('all')
     const [allProducts, setAllProducts] = useState<Array<Product>>([])
 
     useEffect(() => {
@@ -40,13 +40,15 @@ function Products({ products }: { products: Array<Product> }) {
 
     return (
         <Tabs defaultValue={selectedCategory} onValueChange={setSelectedCategory}>
-            <TabsList>
-                <TabsTrigger value="all">All</TabsTrigger>
-                <TabsTrigger value="electronics">Electronics</TabsTrigger>
-                <TabsTrigger value="jewelery">Jewelery</TabsTrigger>
-                <TabsTrigger value="men's clothing">Men's clothing</TabsTrigger>
-                <TabsTrigger value="women's clothing">Women's clothing</TabsTrigger>
-            </TabsList>
+            <div className='flex justify-center'>
+                <TabsList className='dark:text-neutral-200 dark:bg-slate-800'>
+                    <TabsTrigger value="all">All</TabsTrigger>
+                    <TabsTrigger value="electronics">Electronics</TabsTrigger>
+                    <TabsTrigger value="jewelery">Jewelery</TabsTrigger>
+                    <TabsTrigger value="men's clothing">Men's clothing</TabsTrigger>
+                    <TabsTrigger value="women's clothing">Women's clothing</TabsTrigger>
+                </TabsList>
+            </div>
             <TabsContent value={selectedCategory}>
                 <div className="grid grid-cols-1 place-items-center md:grid-cols-2 xl:grid-cols-4 gap-y-10">
                     {allProducts.map((product: Product) => (
@@ -62,10 +64,10 @@ function Products({ products }: { products: Array<Product> }) {
                             "
                                 />
                             </div>
-                            <div className="px-1 w-72">
+                            <div className="px-1 w-72 dark:text-neutral-200">
                                 <div className="text-md font-bold">{truncateString(product.title, 20)}</div>
                                 <div>{product.category}</div>
-                                <div className="text-red-600">${product.price}</div>
+                                <div className="text-red-600 dark:text-rose-400">${product.price}</div>
                             </div>
                         </Link>
                     ))}

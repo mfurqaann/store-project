@@ -1,5 +1,5 @@
 'use client'
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { CartContext } from '../context/cart'
 import {
   Table,
@@ -14,7 +14,12 @@ import {
 import Image from 'next/image'
 
 function Checkout() {
-  const { cart } = useContext(CartContext)
+  const { cart, removeFromCart } = useContext(CartContext);
+
+  const removeProduct = (product: Product) => {
+    removeFromCart(product)
+  }
+
   return (
     <div className='flex justify-center items-center h-screen'>
       <div className='bg-white w-auto h-auto p-5 md:p-5 md:w-3/4 md:min-h-96 rounded-2xl'>
@@ -43,7 +48,12 @@ function Checkout() {
                 </TableCell>
                 <TableCell className='text-center text-lg'>${val.price}</TableCell>
                 <TableCell className='text-center text-lg'>1</TableCell>
-                <TableCell className='text-center text-lg'>Tombol Action</TableCell>
+                <TableCell className='text-center text-lg'>
+                  <div className="flex items-center space-x-2">
+                    <button onClick={() => removeProduct(val)}>Remove</button>
+
+                  </div>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>

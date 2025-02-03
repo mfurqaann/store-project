@@ -8,7 +8,7 @@ export default async function Page() {
 
     return (
         <div className="container mx-auto">
-            <h2 className="text-center">Products</h2>
+            <h2 className="text-center text-3xl dark:text-neutral-200">PRODUCTS</h2>
             <Products products={products} />
         </div>
     )

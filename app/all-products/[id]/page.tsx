@@ -1,6 +1,8 @@
-import AddToCart from '@/app/ui/addToCart';
-import Image from 'next/image';
 import { notFound } from 'next/navigation';
+import Image from 'next/image';
+
+import AddToCart from '@/app/ui/addToCart';
+
 import React from 'react'
 
 export async function generateStaticParams() {
