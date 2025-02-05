@@ -1,25 +1,35 @@
 "use server";
+import { loginFormSchema } from "@/app/lib/auth";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 export type State = {
-  username: string;
-  password: string;
-  error?: string;
-  loading?: boolean;
-  success?: boolean;
+  errors?: {
+    username?: string[];
+    password?: string[];
+  };
+  message?: string | null;
 };
 
 export async function login(
   prevState: State,
   formData: FormData
 ): Promise<State> {
-  const username = formData.get("username");
-  const password = formData.get("password");
+  const validateFields = loginFormSchema.safeParse({
+    username: formData.get("username"),
+    password: formData.get("password"),
+  });
 
-  if (!username || !password) {
-    return { ...prevState, error: "Username and pasword are required" };
+  const errorMessage = { message: "Invalid login credentials" };
+
+  if (!validateFields.success) {
+    return {
+      errors: validateFields.error.flatten().fieldErrors,
+    };
   }
+  console.log(validateFields.success);
+  const { username, password } = validateFields.data;
+
   const url = "https://fakestoreapi.com/auth/login";
 
   try {
@@ -32,7 +42,7 @@ export async function login(
     });
 
     if (!res.ok) {
-      return { ...prevState, error: "Wrong email" };
+      return errorMessage;
     }
 
     const data = await res.json();
@@ -40,7 +50,7 @@ export async function login(
 
     await createSession(token);
   } catch (error: any) {
-    return { ...prevState, error: error.error };
+    return { message: error };
   }
   redirect("/all-products");
 }

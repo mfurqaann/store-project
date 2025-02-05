@@ -11,11 +11,12 @@ import {
 import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { State, login } from '@/lib/actions'
+import { Button } from '@/components/ui/button'
 
 
 function Login() {
   const initialState: State = {
-    username: '', password: '',
+    message: null, errors: {}
   }
   const [state, formAction] = useActionState(login, initialState);
 
@@ -32,17 +33,25 @@ function Login() {
               <div className="flex flex-col space-y-1.5">
                 <Label htmlFor="username">Username</Label>
                 <Input id="username" name="username" placeholder="Username" />
+                {state.errors?.username && (
+                  <p className="text-sm text-red-500">{state.errors.username}</p>
+                )}
               </div>
               <div className="flex flex-col space-y-1.5">
                 <Label htmlFor="password">Password</Label>
                 <Input id="password" name="password" placeholder="Password" type="password" />
+                {state.errors?.password && (
+                  <p className="text-sm text-red-500">{state.errors.password}</p>
+                )}
               </div>
             </div>
-            <button type='submit'>Login</button>
+            <Button className='mt-5 w-full' type='submit'>Login</Button>
           </form>
         </CardContent>
         <CardFooter>
-          {state.error ?? state.error}
+          {state.message && (
+            <p className="text-sm text-red-500 mx-auto">{state.message}</p>
+          )}
         </CardFooter>
       </Card>
     </div>
