@@ -3,7 +3,7 @@ type ProductRating = {
     count: number;
 };
 
-type Product = {
+export type Product = {
     id: number;
     title: string;
     price: number;

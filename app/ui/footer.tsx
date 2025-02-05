@@ -1,6 +1,8 @@
 'use client'
 
-function Footer({ setDarkMode }: { setDarkMode: any }) {
+import { logout } from "@/lib/actions"
+
+function Footer({ setDarkMode }: { setDarkMode: React.Dispatch<React.SetStateAction<string>> }) {
     return (
         <div className='flex flex-wrap justify-between px-10 items-end w-full h-32 mb-3'>
             <div>
@@ -38,7 +40,11 @@ function Footer({ setDarkMode }: { setDarkMode: any }) {
                 </div>
             </div>
             <div>
-                {/* <button onClick={() => darkMode === 'dark' ? setDarkMode('light') : setDarkMode('dark')}>Toggle dark mode</button> */}
+                <button
+                    onClick={async () => await logout()}
+                    className="w-10 h-10 border-2 border-black rounded-md dark:border-white mr-2">
+                    <svg className="size-6 mx-auto dark:stroke-white" fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M17 16L21 12M21 12L17 8M21 12L7 12M13 16V17C13 18.6569 11.6569 20 10 20H6C4.34315 20 3 18.6569 3 17V7C3 5.34315 4.34315 4 6 4H10C11.6569 4 13 5.34315 13 7V8" stroke="#374151" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" /></svg>
+                </button>
                 <button
                     onClick={() => setDarkMode('light')}
                     className='w-10 h-10 border-2 border-black rounded-md dark:border-white mr-2'>
@@ -52,8 +58,6 @@ function Footer({ setDarkMode }: { setDarkMode: any }) {
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 mx-auto dark:stroke-white">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
                     </svg>
-
-
                 </button>
             </div>
         </div>

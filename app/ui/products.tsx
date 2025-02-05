@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import Image from "next/image";
 import Link from "next/link";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Product } from '../lib/definitions';
 
 
 function Products({ products }: { products: Array<Product> }) {
@@ -29,7 +30,7 @@ function Products({ products }: { products: Array<Product> }) {
         } catch (error) {
             console.log(error)
         }
-    }, [selectedCategory])
+    }, [products, selectedCategory])
 
     function truncateString(title: string, maxLength: number): string {
         if (title.length > maxLength) {
@@ -45,8 +46,8 @@ function Products({ products }: { products: Array<Product> }) {
                     <TabsTrigger value="all">All</TabsTrigger>
                     <TabsTrigger value="electronics">Electronics</TabsTrigger>
                     <TabsTrigger value="jewelery">Jewelery</TabsTrigger>
-                    <TabsTrigger value="men's clothing">Men's clothing</TabsTrigger>
-                    <TabsTrigger value="women's clothing">Women's clothing</TabsTrigger>
+                    <TabsTrigger value="men's clothing">Men&apos;s clothing</TabsTrigger>
+                    <TabsTrigger value="women's clothing">Women&aps clothing</TabsTrigger>
                 </TabsList>
             </div>
             <TabsContent value={selectedCategory}>

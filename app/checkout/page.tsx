@@ -1,17 +1,17 @@
 'use client'
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { CartContext } from '../context/cart'
 import {
   Table,
   TableBody,
   TableCaption,
   TableCell,
-  TableFooter,
   TableHead,
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
 import Image from 'next/image'
+import { Product } from '../lib/definitions'
 
 function Checkout() {
   const { cart, removeFromCart } = useContext(CartContext);

@@ -49,14 +49,22 @@ export async function login(
     const token = data.token;
 
     await createSession(token);
-  } catch (error: any) {
-    return { message: error };
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      return { message: error.message };
+    }
+    return { message: "An unknown error occurred" };
   }
   redirect("/all-products");
 }
 
+export async function logout() {
+  (await cookies()).delete("session");
+  redirect("/login");
+}
+
 export async function createSession(token: string) {
-  const expiresAt = new Date(Date.now() + 10 * 1000);
+  const expiresAt = new Date(Date.now() + 60 * 60 * 1000);
 
   (await cookies()).set("token", token, {
     httpOnly: true,

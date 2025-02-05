@@ -4,6 +4,7 @@ import Image from 'next/image';
 import AddToCart from '@/app/ui/addToCart';
 
 import React from 'react'
+import { Product } from '@/app/lib/definitions';
 
 export async function generateStaticParams() {
     const products = await fetch('https://fakestoreapi.com/products', {
@@ -29,7 +30,7 @@ async function getProduct(id: number) {
 
         return product
     } catch (error) {
-        console.log('Error parsing JSON')
+        console.log(error)
     }
 }
 
