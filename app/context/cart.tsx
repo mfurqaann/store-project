@@ -1,6 +1,7 @@
 'use client'
 
 import { createContext, useState } from "react";
+import { Product } from "../lib/definitions";
 
 type Cart = {
     addToCart: (product: Product) => void,
