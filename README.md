@@ -54,3 +54,18 @@ The application interacts with the following FakeStoreAPI endpoints to fetch pro
 - **GET** `/products/category/${category}`: Fetches a list of products belonging to a specific category.
 
 For more information about the API, visit [FakeStoreAPI](https://fakestoreapi.com/).
+
+## API Endpoint - User Credentials
+This endpoint allows you to retrieve a list of users, including their login credentials, such as username and password, used for authentication in a mock e-commerce store.
+
+The endpoint URL is:
+https://fakestoreapi.com/users
+
+
+## Request
+
+To retrieve the user credentials, send a `GET` request to the following URL:
+**GET** https://fakestoreapi.com/users
+
+## Response
+The response will be a JSON array containing user information, including id, username, email, and the login credentials under the username and password fields.
