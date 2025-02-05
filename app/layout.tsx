@@ -23,7 +23,7 @@ export default function RootLayout({
         <CartProvider>
           {!hideNavbar && <Navbar />}
           {children}
-          <Footer setDarkMode={setDarkMode} />
+          {!hideNavbar && <Footer setDarkMode={setDarkMode} />}
         </CartProvider>
       </body>
     </html>
