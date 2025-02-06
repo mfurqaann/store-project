@@ -1,5 +1,5 @@
 'use client'
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { CartContext } from '../context/cart'
 import {
   Table,
@@ -15,6 +15,10 @@ import { Product } from '../lib/definitions'
 
 function Checkout() {
   const { cart, removeFromCart } = useContext(CartContext);
+
+  useEffect(() => {
+    document.title = 'Checkout'
+  }, [])
 
   const removeProduct = (product: Product) => {
     removeFromCart(product)

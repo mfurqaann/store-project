@@ -1,10 +1,29 @@
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
+import type { Metadata, ResolvingMetadata } from 'next'
 
 import AddToCart from '@/app/ui/addToCart';
 
 import React from 'react'
 import { Product } from '@/app/lib/definitions';
+
+type Props = {
+    params: Promise<{ id: string }>
+    searchParams: Promise<{ [key: string]: string | string[] | undefined }>
+}
+
+export async function generateMetadata(
+    { params, searchParams }: Props,
+    parent: ResolvingMetadata
+): Promise<Metadata> {
+    const id = (await params).id
+
+    const product: Product | undefined = await getProduct(+id)
+
+    return {
+        title: product?.title,
+    }
+}
 
 export async function generateStaticParams() {
     const products = await fetch('https://fakestoreapi.com/products', {

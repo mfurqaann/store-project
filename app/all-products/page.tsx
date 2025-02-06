@@ -1,6 +1,11 @@
 import Products from "@/app/ui/products";
+import { Metadata } from "next";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+
+export const metadata: Metadata = {
+    title: 'Products | Fake Online Store',
+}
 
 export default async function Page() {
     const data = await fetch('https://fakestoreapi.com/products', {

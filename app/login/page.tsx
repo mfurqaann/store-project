@@ -1,5 +1,5 @@
 "use client"
-import React, { useActionState } from 'react'
+import React, { useActionState, useEffect } from 'react'
 import {
   Card,
   CardContent,
@@ -25,6 +25,11 @@ function Login() {
   const initialState: State = {
     message: null, errors: {}
   }
+
+  useEffect(() => {
+    document.title = "Login | Fake Online Store"
+  }, [])
+
   const [state, formAction] = useActionState(login, initialState);
 
   return (
