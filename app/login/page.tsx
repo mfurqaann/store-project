@@ -8,6 +8,13 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
 import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { State, login } from '@/lib/actions'
@@ -46,6 +53,17 @@ function Login() {
               </div>
             </div>
             <Button className='mt-5 w-full' type='submit'>Login</Button>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button className='w-full mt-5'>Hint</Button>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Username : johnd</p>
+                  <p>Password : m38rmF$</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
           </form>
         </CardContent>
         <CardFooter>

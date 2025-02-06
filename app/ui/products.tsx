@@ -47,7 +47,7 @@ function Products({ products }: { products: Array<Product> }) {
                     <TabsTrigger value="electronics">Electronics</TabsTrigger>
                     <TabsTrigger value="jewelery">Jewelery</TabsTrigger>
                     <TabsTrigger value="men's clothing">Men&apos;s clothing</TabsTrigger>
-                    <TabsTrigger value="women's clothing">Women&aps clothing</TabsTrigger>
+                    <TabsTrigger value="women's clothing">Women&apos;s clothing</TabsTrigger>
                 </TabsList>
             </div>
             <TabsContent value={selectedCategory}>
