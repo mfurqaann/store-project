@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
-import type { Metadata, ResolvingMetadata } from 'next'
+import type { Metadata } from 'next'
 
 import AddToCart from '@/app/ui/addToCart';
 
@@ -13,8 +13,7 @@ type Props = {
 }
 
 export async function generateMetadata(
-    { params, searchParams }: Props,
-    parent: ResolvingMetadata
+    { params }: Props,
 ): Promise<Metadata> {
     const id = (await params).id
 
