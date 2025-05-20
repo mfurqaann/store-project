@@ -8,11 +8,13 @@ export const metadata: Metadata = {
 }
 
 export default async function Page() {
+    await new Promise((resolve) => setTimeout(resolve, 2000))
     const data = await fetch('https://fakestoreapi.com/products', {
         cache: 'force-cache'
     });
     const products = await data.json();
-    const isToken = (await cookies()).get("token");
+    const cookieStore = cookies();
+    const isToken = (await cookieStore).get("token");
 
     if (!isToken) {
         redirect('/login')

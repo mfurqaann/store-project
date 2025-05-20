@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import React, { useEffect, useState } from 'react'
 import Image from "next/image";
@@ -8,7 +8,7 @@ import { Product } from '../lib/definitions';
 
 
 function Products({ products }: { products: Array<Product> }) {
-    const [selectedCategory, setSelectedCategory] = useState('all')
+    const [selectedCategory, setSelectedCategory] = useState<string>("all")
     const [allProducts, setAllProducts] = useState<Array<Product>>([])
 
     useEffect(() => {
@@ -31,6 +31,20 @@ function Products({ products }: { products: Array<Product> }) {
             console.log(error)
         }
     }, [products, selectedCategory])
+
+    useEffect(() => {
+        const verifyMe = async () => {
+            const res = await fetch('http://localhost:3001/api/auth/me', {
+                credentials: 'include'
+            })
+
+            if (!res.ok) {
+                window.location.href = '/login'
+                throw new Error('Unauthorized')
+            }
+        }
+        verifyMe();
+    })
 
     function truncateString(title: string, maxLength: number): string {
         if (title.length > maxLength) {

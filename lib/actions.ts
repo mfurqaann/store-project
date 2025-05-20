@@ -40,7 +40,7 @@ export async function login(
       },
       body: JSON.stringify({ username, password }),
     });
-
+    console.log(res);
     if (!res.ok) {
       return errorMessage;
     }
@@ -59,7 +59,7 @@ export async function login(
 }
 
 export async function logout() {
-  (await cookies()).delete("session");
+  (await cookies()).delete("token");
   redirect("/login");
 }
 
