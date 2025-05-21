@@ -25,7 +25,7 @@ function Login() {
 
     const checkLogin = async () => {
       try {
-        const response = await fetch('http://store-project-server-production.up.railway.app/api/auth/me', {
+        const response = await fetch('https://store-project-server-production.up.railway.app/api/auth/me', {
           method: 'GET',
           credentials: 'include'
         });
@@ -46,7 +46,7 @@ function Login() {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const response = await fetch('https://store-project-server.up.railway.app/api/auth/login', {
+    const response = await fetch('https://store-project-server-production.up.railway.app/api/auth/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
