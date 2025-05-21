@@ -45,7 +45,7 @@ function Register() {
             }
         }
         checkLogin();
-    }, [])
+    }, [router])
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         // console.log(e.target.name)

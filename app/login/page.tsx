@@ -41,7 +41,7 @@ function Login() {
       }
     }
     checkLogin();
-  }, [])
+  }, [router])
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -83,7 +83,7 @@ function Login() {
             <Button className='mt-5 w-full' type='submit'>Login</Button>
           </form>
 
-          <p className='my-3 text-center'>Don't have an account ?</p>
+          <p className='my-3 text-center'>Don&apos;t have an account ?</p>
           <Link href={{ pathname: '/register' }}>
             <Button className='w-full' type='submit'>Register</Button>
           </Link>
