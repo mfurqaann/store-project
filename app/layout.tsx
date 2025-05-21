@@ -14,7 +14,7 @@ export default function RootLayout({
 }>) {
   const [darkMode, setDarkMode] = useState('light')
   const pathname = usePathname();
-  const hideNavbar = pathname === '/login';
+  const hideNavbar = pathname === '/login' || pathname === '/register';
 
   return (
     <html lang="en" className={darkMode}>
