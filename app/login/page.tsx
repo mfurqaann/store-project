@@ -4,7 +4,6 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
@@ -12,6 +11,7 @@ import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 
 
 function Login() {
@@ -72,29 +72,22 @@ function Login() {
           <form onSubmit={handleSubmit}>
             <div className="grid w-full items-center gap-4">
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="username">Username</Label>
-                <Input id="username" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Username" />
-                {/* {state.errors?.username && (
-                  <p className="text-sm text-red-500">{state.errors.username}</p>
-                )} */}
+                <Label htmlFor="email">Email</Label>
+                <Input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
               </div>
               <div className="flex flex-col space-y-1.5">
                 <Label htmlFor="password">Password</Label>
                 <Input id="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" type="password" />
-                {/* {state.errors?.password && (
-                  <p className="text-sm text-red-500">{state.errors.password}</p>
-                )} */}
               </div>
             </div>
             <Button className='mt-5 w-full' type='submit'>Login</Button>
           </form>
 
+          <p className='my-3 text-center'>Don't have an account ?</p>
+          <Link href={{ pathname: '/register' }}>
+            <Button className='w-full' type='submit'>Register</Button>
+          </Link>
         </CardContent>
-        <CardFooter>
-          {/* {state.message && (
-            <p className="text-sm text-red-500 mx-auto">{state.message}</p>
-          )} */}
-        </CardFooter>
       </Card>
     </div>
   )

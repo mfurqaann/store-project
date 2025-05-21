@@ -86,23 +86,14 @@ function Register() {
                             <div className="flex flex-col space-y-1.5">
                                 <Label htmlFor="name">Full Name</Label>
                                 <Input id="name" name="name" value={formData.name} onChange={handleChange} placeholder="Full Name" />
-                                {/* {state.errors?.username && (
-                  <p className="text-sm text-red-500">{state.errors.username}</p>
-                )} */}
                             </div>
                             <div className="flex flex-col space-y-1.5">
                                 <Label htmlFor="email">Email</Label>
-                                <Input id="email" name="email" value={formData.email} onChange={handleChange} placeholder="Email" />
-                                {/* {state.errors?.username && (
-                  <p className="text-sm text-red-500">{state.errors.username}</p>
-                )} */}
+                                <Input id="email" type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Email" />
                             </div>
                             <div className="flex flex-col space-y-1.5">
                                 <Label htmlFor="password">Password</Label>
                                 <Input id="password" name="password" value={formData.password} onChange={handleChange} placeholder="Password" type="password" />
-                                {/* {state.errors?.password && (
-                  <p className="text-sm text-red-500">{state.errors.password}</p>
-                )} */}
                             </div>
                         </div>
                         <Button className='mt-5 w-full' type='submit'>Register</Button>
