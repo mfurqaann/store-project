@@ -29,7 +29,7 @@ function Register() {
 
         const checkLogin = async () => {
             try {
-                const response = await fetch('http://localhost:3001/api/auth/me', {
+                const response = await fetch('http://store-project-server-production.up.railway.app/api/auth/me', {
                     method: 'GET',
                     credentials: 'include'
                 });
@@ -56,7 +56,7 @@ function Register() {
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         console.log(formData)
-        const response = await fetch('http://localhost:3001/api/auth/register', {
+        const response = await fetch('http://store-project-server-production.up.railway.app/api/auth/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

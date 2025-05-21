@@ -34,7 +34,7 @@ function Products({ products }: { products: Array<Product> }) {
 
     useEffect(() => {
         const verifyMe = async () => {
-            const res = await fetch('http://localhost:3001/api/auth/me', {
+            const res = await fetch('http://store-project-server-production.up.railway.app/api/auth/me', {
                 credentials: 'include'
             })
 
